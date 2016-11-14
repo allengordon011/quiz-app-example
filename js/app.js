@@ -127,7 +127,8 @@ const renderFinalFeedbackPage = (state, element) => {
 };
 
 const renderQuestionCount = (state, element) => {
-  const text = (state.currentQuestionIndex + 1) + "/" + state.questions.length;
+  // const text = (state.currentQuestionIndex + 1) + "/" + state.questions.length;
+  const text = `${(state.currentQuestionIndex + 1)} / ${state.questions.length}`;
   element.text(text);
 };
 
@@ -140,10 +141,10 @@ const renderChoices = (state, element) => {
   const currentQuestion = state.questions[state.currentQuestionIndex];
   const choices = currentQuestion.choices.map((choice, index) => {
     return (
-      '<li>' +
-        '<input type="radio" name="user-answer" value="' + index + '" required>' +
-        '<label>' + choice + '</label>' +
-      '</li>'
+      `<li>
+        <input type="radio" name="user-answer" value=" ${index} " required>
+        <label> ${choice} </label>
+      </li>`
     );
   });
   element.html(choices);
@@ -170,12 +171,12 @@ const renderNextButtonText = (state, element) => {
 };
 
 const renderFinalFeedbackText = (state, element) => {
-  const text = "You got " + state.score + " out of " +
-    state.questions.length + " questions right.";
+  const text = `You got  ${state.score} out of
+    ${state.questions.length} questions right`;
   element.text(text);
 };
 
-// Event handlers 
+// Event handlers
 const PAGE_ELEMENTS = {
   'start': $('.start-page'),
   'question': $('.question-page'),
@@ -203,9 +204,12 @@ $("form[name='current-question']").submit((event) => {
   renderApp(state, PAGE_ELEMENTS);
 });
 
-$(".see-next").click(function(event) {
+$(".see-next").click((event) => {
   advance(state);
   renderApp(state, PAGE_ELEMENTS);
 });
 
 $(function() { renderApp(state, PAGE_ELEMENTS); });
+
+// const unNamed = () => { renderApp(state, PAGE_ELEMENTS);
+// $(unNamed());
