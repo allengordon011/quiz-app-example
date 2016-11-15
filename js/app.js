@@ -122,7 +122,7 @@ const renderAnswerFeedbackPage = (state, element) => {
   renderNextButtonText(state, element.find(".see-next"));
 };
 
-const renderFinalFeedbackPage = (state, element) => {
+const renderFinalFeedbackPage = (state,  element) => {
   renderFinalFeedbackText(state, element.find('.results-text'));
 };
 
